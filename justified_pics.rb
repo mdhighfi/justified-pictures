@@ -1,4 +1,7 @@
+#!/usr/bin/ruby
+
 require 'erb'
+require_relative 'collection'
 
 def save_index_page(page)
   filename = "index.html"
@@ -12,5 +15,3 @@ collection = Collection.new
 erb_template = ERB.new(File.read "index.erb")
 index_page = erb_template.result(binding)
 save_index_page(index_page)
-
-end

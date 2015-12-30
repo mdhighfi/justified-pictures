@@ -1,14 +1,17 @@
+#!/usr/bin/ruby
+
 require_relative 'row'
+require 'byebug'
 require_relative 'picture'
 
 class Collection
-  TOO_SHORT = 100 / 1020
-  TALLEST = 350 / 1020
+  TOO_SHORT = 100 / 1020.to_f
+  TALLEST = 350 / 1020.to_f
   ORDER_TOLERANCE = 10
 
   attr_reader :unassigned, :rows, :assigned
 
-  def initialize(num_pics = 50)
+  def initialize(num_pics = 10)
     @unassigned = []
     num_pics.times do
       @unassigned << Picture.new
@@ -17,6 +20,10 @@ class Collection
     @assigned = []
     @rows = []
     generate_rows
+  end
+
+  def to_s
+    "Collection: #{@rows}"
   end
 
   private
@@ -30,10 +37,11 @@ class Collection
   def generate_row
     current_row = Row.new([@unassigned.first])
     @assigned << @unassigned.shift
-    while (current_row.dimensions > TALLEST) || @unassigned.empty?
+    while (current_row.dimensions > TALLEST) && !@unassigned.empty?
       current_row.add_pic(@unassigned.first)
       @assigned << @unassigned.shift
     end
     current_row
   end
+
 end

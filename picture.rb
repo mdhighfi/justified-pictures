@@ -1,4 +1,4 @@
-require 'faker'
+#!/usr/bin/ruby
 
 class Picture
   MIN = 400
@@ -12,37 +12,32 @@ class Picture
     @src = generate_image_url
   end
 
+  def to_s
+    "P: #{@width/@height.to_f}"
+  end
+
   private
 
   def rand_color
     hex_digits = Hash[(10..15).zip('a'..'f')]
-    color = [[], []]
+    color_digits = []
     digits = (0..15).to_a
-    6.times do
-      digit = digits.sample
-      color[0] << digit
-      color[1] << (15 - digit)
+    3.times do
+      color_digits << digits.sample
     end
-    2.times do |i|
-      color[i].map! do |digit|
-        if digit > 9
-          hex_digits[digit]
-        else
-          digit.to_s
-        end
+    color = ''
+    color_digits.each do |digit|
+      if digit > 9
+        color << hex_digits[digit]
+      else
+        color << digit.to_s
       end
     end
-    color.map(&:join)
+    color
   end
 
   def generate_image_url
-    random_colors = rand_color
-    Faker::Placeholdit.image(
-      "#{@width}x#{@height}",
-      'jpg',
-      random_colors.first,
-      random_colors.last,
-      Faker::Hacker.say_something_smart
-    )
+    "http://dummyimage.com/#{@width}x#{@height}/#{rand_color}/#{rand_color}"
   end
+
 end
