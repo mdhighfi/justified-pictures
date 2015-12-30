@@ -4,11 +4,11 @@
   <title>Image Justifier</title>
 </head>
 <body>
-  <h1>Here are some fake images</h1>
+  <h2>Here are some fake images</h2><br>
   <% collection.rows.each do |row| %>
   <%   row.pictures.each do |pic| %>
-  <img src="<%= pic.src %>"
-  <%   end %>
+  <img src="<%= pic.src %>">
+  <%   end %><br>
   <% end %>
 </body>
 </html>

@@ -1,3 +1,5 @@
+require_relative 'picture'
+
 class Row
   attr_reader :pictures
 
