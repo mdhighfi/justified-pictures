@@ -10,7 +10,7 @@ class Row
   end
 
   def remove_pic(pic)
-    delete pic if @pictures.include?(pic)
+    @pictures.delete(pic) if @pictures.include?(pic)
   end
 
   def dimensions
@@ -21,8 +21,7 @@ class Row
       total += pic.width * scale_factors[idx]
     end
     width = space_between_pics + total
-    height = @pictures.inject(0) { |total, curr| curr.height + total }
-    height / width
+    min_height / width
   end
 
   private

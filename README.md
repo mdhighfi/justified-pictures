@@ -10,7 +10,10 @@
 
 ### Variables
 
-- ORDER_TOLERANCE describes how many pictures you can grab from beyond what fits naturally into one row, to try rearranging them to see if they fit better in another row
+- ORDER_TOLERANCE describes how far you can look ahead to find a better fit for the current row.
+
+### Another Idea
+How about having no minimum height for the pictures? Just keep adding photos that have been resized to the max height to a row until it exceeds the max width.
 
 ## Possible Bugs
 

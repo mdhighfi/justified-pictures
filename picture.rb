@@ -1,5 +1,5 @@
 class Picture
-  MIN = 200
+  MIN = 400
   MAX = 2000
 
   attr_reader :width, :height, :displacement
