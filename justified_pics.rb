@@ -1,3 +1,6 @@
+require 'faker'
+require 'erb'
+
 class Collection
   TOO_SHORT = 100 / 1020
   TALLEST = 350 / 1020
