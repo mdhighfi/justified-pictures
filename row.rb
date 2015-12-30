@@ -14,8 +14,13 @@ class Row
   end
 
   def dimensions
-    scale_factors =
-     = @pictures.inject(0) { |total, curr| curr.width + total } + 4*@pictures.length
+    scale_factors = @pictures.map { |pic| (min_height / pic.height) }
+    space_between_pics = 4*@pictures.length
+    total = 0
+    @pictures.each_with_index do |pic, idx|
+      total += pic.width * scale_factors[idx]
+    end
+    width = space_between_pics + total
     height = @pictures.inject(0) { |total, curr| curr.height + total }
     height / width
   end
@@ -27,6 +32,6 @@ class Row
   end
 
   def min_width
-    @pictures.min { |a, b| a.height <=> b.height }
+    @pictures.min { |a, b| a.width <=> b.width }
   end
 end
