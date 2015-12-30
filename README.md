@@ -1,21 +1,12 @@
-# Justified Pictures Prototype
+# Justified Pictures
 
-## Outline / Notes
-- 4 pixels between each photo
-- 1020 pixels total on Flickr on my screen
-- use CSS to resize, but load based on original screen size first, then display that, then load other collages in case the user changes screen size
+## What?
+This will help to display a collection of images in a nice way. Each row of images will have the same width, creating a justified look. The images are resized, but none of the images are cropped. Instead, the heights of rows are variable.
 
-- Example short row: 1020 x 220
-- Example tall row: 1020 x 330
+## Why?
+There are several jQuery solutions to this problem, but I wanted to try it without jQuery. Why? The problem came about when working on a React app. Using jQuery in a React app can potentially cause problems. They might confuse each other if they are both manipulating the DOM, for example. Also, loading a bunch of unnecessary libraries makes the app bloated.
 
-### Variables
+### Bugs
 
-- ORDER_TOLERANCE describes how far you can look ahead to find a better fit for the current row.
-
-### Another Idea
-How about having no minimum height for the pictures? Just keep adding photos that have been resized to the max height to a row until it exceeds the max width.
-
-## Possible Bugs
-
-- one bad sized picture may get pushed all the way to the end
-- fix with attr on picture to describe how far it has been displaced from its original ordering, then check that before pushing it any further
+- The last picture is sometimes huge
+- rows that have more pictures are slightly more wide
