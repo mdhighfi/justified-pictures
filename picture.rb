@@ -16,6 +16,11 @@ class Picture
     "P: #{@width/@height.to_f}"
   end
 
+  def rescale!(factor)
+    @width *= factor
+    @height *= factor
+  end
+
   private
 
   def rand_color

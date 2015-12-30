@@ -35,6 +35,20 @@ class Row
     "Row: #{@pictures}"
   end
 
+  def rescale!
+    # first make every picture the same height
+    factor = max_height
+    @pictures.each do |pic|
+      pic.rescale!(factor.to_f / pic.height)
+    end
+
+    # then make the total width correct
+    factor = 1020.to_f / (@pictures.inject(0) { |total, pic| pic.width + total })
+    @pictures.each do |pic|
+      pic.rescale!(factor)
+    end
+  end
+
   private
 
   def smallest_pic
@@ -42,7 +56,11 @@ class Row
   end
 
   def min_width
-    @pictures.min { |a, b| a.width <=> b.width }
+    @pictures.min { |a, b| a.width <=> b.width }.width
+  end
+
+  def max_height
+    @pictures.max_by(&:height).height
   end
 
 end

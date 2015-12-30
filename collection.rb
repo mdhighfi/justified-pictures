@@ -30,7 +30,9 @@ class Collection
 
   def generate_rows
     until @unassigned.empty?
-      @rows << generate_row
+      new_row = generate_row
+      new_row.rescale!
+      @rows << new_row
     end
   end
 

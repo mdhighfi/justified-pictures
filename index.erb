@@ -7,7 +7,7 @@
   <h2>Here are some fake images</h2><br>
   <% collection.rows.each do |row| %>
   <%   row.pictures.each do |pic| %>
-  <img src="<%= pic.src %>">
+  <img src="<%= pic.src %>" width="<%= pic.width %>" height="<%= pic.height %>">
   <%   end %><br>
   <% end %>
 </body>
